@@ -1,0 +1,27 @@
+class Solution {
+    public int twoCitySchedCost(int[][] costs) {
+        int len=costs.length;
+        int dp[][]=new int[len/2+1][len/2+1];
+        return Helper(costs,0,len/2,len/2,dp);
+    }
+    
+    public int Helper(int [][]costs,int idx,int a,int b,int dp[][]){
+        if(a==0&&b==0){
+            return 0;
+        }
+        if(a<0||b<0||idx>=costs.length){
+            return 100000000;
+        }
+        
+        if(dp[a][b]!=0){
+            return dp[a][b];
+        }
+        
+        int incA= costs[idx][0]+Helper(costs,idx+1,a-1,b,dp);
+        int incB= costs[idx][1]+Helper(costs,idx+1,a,b-1,dp);
+        
+        dp[a][b]=Math.min(incA,incB);
+        
+        return Math.min(incA,incB);
+    }
+}
