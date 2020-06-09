@@ -1,0 +1,44 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+    
+/RECURSIVE
+
+//         if(s.length()>t.length()){
+//             return false;
+//         }
+        
+//         if(s.length()==0){
+//             return true;
+//         }
+//         if(t.length()==0){
+//             return false;
+//         }
+        
+//         boolean yes=false;
+//         boolean no=false;
+//         if(s.charAt(0)==t.charAt(0)){
+//             yes=isSubsequence(s.substring(1,s.length()),t.substring(1,t.length()));
+//         }else{
+//             no=isSubsequence(s,t.substring(1,t.length()));
+//         }
+        
+//         return (yes||no);
+
+//ITERATIVE O(n)
+        int i=0;
+        for(i=0;i<t.length();i++){
+            if(s.length()==0){
+                return true;
+            }
+            if(t.charAt(i)==s.charAt(0)){
+                s=s.substring(1,s.length());
+            }
+        }
+        
+        if(s.length()==0){
+            return true;
+        }
+        
+        return false;
+    }
+}
