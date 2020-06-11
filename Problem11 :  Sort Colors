@@ -1,0 +1,24 @@
+class Solution {
+//  INPLACE
+    public void sortColors(int[] nums) {
+        HashMap<Integer,Integer>map =  new HashMap<>();
+        //FILLING HASHMAP
+        for(int i=0;i<nums.length;i++){
+            if(map.get(nums[i])==null){
+                map.put(nums[i],1);
+            }else{
+                map.put(nums[i],map.get(nums[i])+1);
+            }
+        }
+        //ITERATING OVER THE HASHMAP AND FILLING THE ARRAY 
+        int idx=0;
+        for(Map.Entry<Integer,Integer>entry : map.entrySet()){
+            int temp = entry.getValue();
+            while(temp>0){
+                nums[idx]=entry.getKey();
+                temp--;
+                idx++;
+            }
+        }
+    }
+}
