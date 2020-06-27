@@ -1,0 +1,46 @@
+?/Floyd Tortoise and Hare Algorithm for cycle detection
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int count = 0;
+        int slow = nums[0];
+        int fast = nums[0];
+        
+        while(count == 0 || slow!=fast){
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+            count++;
+        }
+ 
+        slow = nums[0];
+        
+        while(slow != fast){
+            fast = nums[fast];
+            slow = nums[slow];
+        }
+        
+        return slow;
+    }
+    
+//     public static int binsrch(int nums[] , int idx){
+//         int lo = 0;
+//         int hi = nums.length-1;
+        
+//         while(lo<=hi){
+//             int mid = (lo+hi)/2;
+//             System.out.println(mid + " " + nums[mid]);
+//             if(nums[mid] == nums[idx] && mid!=idx){
+//                 System.out.println("inif");
+//                 return mid;
+//             }
+            
+//             if(mid>=nums[idx]){
+//                 hi = mid-1;
+//             }else{
+//                 lo = mid+1;
+//             }
+//         }
+        
+    //     return -1;
+    // }
+}
